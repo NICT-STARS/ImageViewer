@@ -2,7 +2,6 @@
 /******************************************************************************/
 /* k2go Image Viewer for JQuery Plugin                                        */
 /* version 1.0.0                                                              */
-/* author  Inoue Computer Service.                                            */
 /* Copyright (c) NICT. All rights reserved.                                   */
 /* See License.txt for the license information.                               */
 /******************************************************************************/
