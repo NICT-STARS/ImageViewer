@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>ImageViewer</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="style.css" media="all">
+</head>
+
+<body>
+
+    <div id="main-img">
+      <h1>ImageViewer 開発者向けドキュメント</h1>
+    </div>
+
+  <div class="cols">
+    <h2>概要</h2>
+    <p>Webページに画像をスケーラブルに表示する機能を簡単に組み込む事が出来るjQueryプラグインです。</p>
+    <!-- <p style="font-weight: bold">サンプル</p>
+    <ul style="margin:0; padding: 10px 0 0 20px;">
+      <li><a href="./sample" target="_blank">サンプル1</a></li>
+    </ul> -->
+
+  </div>
+
+  <div class="cols">
+    <h2>変更履歴</h2>
+    <ul>
+      <li>2021年04月8日 バージョン1.0.0（初版）リリース</li>
+    </ul>
+  </div>
+
+  <div class="cols">
+    <h2>ライセンス</h2>
+    <p>BSD2</p>
+  </div>
+
+  <div class="cols">
+    <h2>主な機能</h2>
+    <ul>
+      <li>マウスドラッグで上下左右に移動出来ます。</li>
+      <li>タッチデバイスではスワイプで上下左右に移動出来ます。</li>
+      <li>マウスの左ダブルクリックでズームイン、右ダブルクリックでズームアウト出来ます。</li>
+      <li>マウスホイールでズームイン・アウト出来ます。</li>
+      <li>タッチデバイスではピンチ操作でズームイン・アウト出来ます。</li>
+    </ul>
+  </div>
+
+  <div class="cols">
+    <h2>導入方法</h2>
+    <p><span class="num">1.</span>下記ライブラリをダウンロードする。</p>
+
+    <ul>
+      <li>jquery-k2go-image-viewer.js</li>
+      <li>License.txt</li>
+    </ul>
+
+    <p><span class="num">2.</span>jquery（Ver3.4.1以上）とダウンロードしたライブラリをHTMLファイルへ組み込む。</p>
+    <span class="ex">例</span>
+    <pre>
+&lt;!DOCTYPE html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;script type="text/javascript" src="jquery-3.4.1.min.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="jquery-k2go-image-viewer.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  ・・・
+&lt;/body&gt;
+&lt;/html&gt;
+    </pre>
+
+    <p><span class="num">3.</span>windowオブジェクトのload完了後、組み込みたい画像要素へ実装する。</p>
+    <span class="ex">例</span>
+    <pre>
+$(window).on("load", function()
+{
+  $(セレクタ).k2goImageViewer(オプション);
+});
+  </pre>
+  </div>
+
+  <div class="cols">
+    <h2>オプション</h2>
+    <table style="width: 100%">
+      <thead>
+        <tr>
+          <th>名前</th>
+          <th>型</th>
+          <th>初期値</th>
+          <th>説明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>rate</td>
+          <td>Number</td>
+          <td>0.1</td>
+          <td>画像を拡大・縮小する各段階の倍率。値が小さい程、細かい段階でズームイン・アウトします。</td>
+        </tr>
+        <tr>
+          <td>maxWidth</td>
+          <td>Number</td>
+          <td>画像サイズ（幅）×10</td>
+          <td>ズームインした際の最大サイズ（幅）。</td>
+        </tr>
+        <tr>
+          <td>maxHeight</td>
+          <td>Number</td>
+          <td>画像サイズ（高さ）×10</td>
+          <td>ズームインした際の最大サイズ（高さ）。</td>
+        </tr>
+        <tr>
+          <td>minWidth</td>
+          <td>Number</td>
+          <td>画像サイズ（幅）÷2</td>
+          <td>ズームアウトした際の最小サイズ（幅）。</td>
+        </tr>
+        <tr>
+          <td>minHeight</td>
+          <td>Number</td>
+          <td>画像サイズ（高さ）÷2</td>
+          <td>ズームアウトした際の最小サイズ（高さ）。</td>
+        </tr>
+        <tr>
+          <td>move</td>
+          <td>Function</td>
+          <td>undefined</td>
+          <td>ドラッグ（スワイプ）した際に呼び出されるコールバック関数です。</td>
+        </tr>
+        <tr>
+          <td>zoom</td>
+          <td>Function</td>
+          <td>undefined</td>
+          <td>ズームした際に呼び出されるコールバック関数です。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <span class="ex">コンストラクタの例</span>
+    <pre>
+$(セレクタ).k2goImageViewer(
+{
+  rate      : 0.1,
+  maxWidth  : $(セレクタ).get(0).naturalWidth  * 10,
+  maxHeight : $(セレクタ).get(0).naturalHeight * 10,
+  minWidth  : $(セレクタ).get(0).naturalWidth  /  2,
+  minHeight : $(セレクタ).get(0).naturalHeight /  2,
+  move      : function(pThis){ console.log("move"); },
+  zoom      : function(pThis){ console.log("zoom"); }
+});
+    </pre>
+
+  </div>
+
+
+  <div class="cols">
+    <h2>メソッド</h2>
+    <h3>setOptions</h3>
+    <table class="method">
+      <tbody>
+        <tr>
+          <td>説明</td>
+          <td>オプションの設定変更を行います。</td>
+        </tr>
+        <tr>
+          <td>構文</td>
+          <td>$(セレクタ).k2goImageViewer("setOptions", 引数);</td>
+        </tr>
+        <tr>
+          <td>引数</td>
+          <td>変更したいオプション値を含むObject</td>
+        </tr>
+        <tr>
+          <td>戻り値</td>
+          <td>jqueryオブジェクト</td>
+        </tr>
+        <tr>
+          <td>実装例</td>
+          <td class="code">
+            <pre>
+$(セレクタ).k2goImageViewer("setOptions",
+{
+  rate      : 0.5,
+  maxWidth  : 1000,
+  maxHeight : 1000
+});</pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>getOptions</h3>
+    <table class="method">
+      <tbody>
+        <tr>
+          <td>説明</td>
+          <td>オプション値を取得します。</td>
+        </tr>
+        <tr>
+          <td>構文</td>
+          <td>$(セレクタ).k2goImageViewer("getOptions");</td>
+        </tr>
+        <tr>
+          <td>引数</td>
+          <td>無し</td>
+        </tr>
+        <tr>
+          <td>戻り値</td>
+          <td>現在のオプション値を含むObject</td>
+        </tr>
+        <tr>
+          <td>実装例</td>
+          <td class="code">
+            <pre>
+var options = $(セレクタ).k2goImageViewer("getOptions");</pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>destroy</h3>
+    <table class="method">
+      <tbody>
+        <tr>
+          <td>説明</td>
+          <td>当該要素に対しk2goImageViewerの組み込みを解除します。</td>
+        </tr>
+        <tr>
+          <td>構文</td>
+          <td>$(セレクタ).k2goImageViewer("destroy");</td>
+        </tr>
+        <tr>
+          <td>引数</td>
+          <td>無し</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
