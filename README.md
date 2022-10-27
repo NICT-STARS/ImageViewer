@@ -5,7 +5,7 @@ Webページに画像をスケーラブルに表示する機能を簡単に組�
 ------------
 
 ### Webサイト
-https://www.k2go.jp/public/ImageViewer/
+http://k2go.jp/public/ImageViewer/
 
 ------------
 
