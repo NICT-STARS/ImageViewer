@@ -1,12 +1,6 @@
 # ImageViewer
 Webページに画像をスケーラブルに表示する機能を簡単に組み込む事が出来るWebComponentsです。
 
-
-------------
-
-### サンプルアプリ
-https://nict-stars.github.io/ImageViewer/sample/
-
 ------------
 
 ### ライセンス
