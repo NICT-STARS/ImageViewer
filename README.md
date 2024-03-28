@@ -1,11 +1,11 @@
 # ImageViewer
-Webページに画像をスケーラブルに表示する機能を簡単に組み込む事が出来るjQueryプラグインです。
+Webページに画像をスケーラブルに表示する機能を簡単に組み込む事が出来るWebComponentsです。
 
 
 ------------
 
-### Webサイト
-http://k2go.jp/public/ImageViewer/
+### サンプルアプリ
+https://nict-stars.github.io/ImageViewer/sample/
 
 ------------
 
@@ -28,5 +28,5 @@ BSD2
 ### 導入方法
 
 1. ライブラリをダウンロードする。
-2. jquery（Ver3.4.1以上）とダウンロードしたライブラリをHTMLファイルへ組み込む。
+2. ダウンロードしたライブラリをHTMLファイルへ組み込む。
 3. windowオブジェクトのload完了後、組み込みたい画像要素へ実装する。
