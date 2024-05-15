@@ -5,7 +5,7 @@ Webページに画像をスケーラブルに表示する機能を簡単に組�
 ------------
 
 ### Webサイト
-http://k2go.jp/public/ImageViewer/
+https://nict-stars.github.io/ImageViewer
 
 ------------
 
